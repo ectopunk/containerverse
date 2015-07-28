@@ -1,5 +1,5 @@
 # Latest version of centos
-FROM centos:centos6
+FROM centos:6.6
 MAINTAINER Local Admin
 RUN yum clean all && \
     yum -y install epel-release && \
