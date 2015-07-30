@@ -5,7 +5,7 @@ ENV container docker
 # Install EPEL
 RUN rpm -Uvh --force http://mirrors.kernel.org/fedora-epel/7/x86_64/e/epel-release-7-5.noarch.rpm
 
-RUN yum -y update; yum clean all; yum install -y systemd-libs net-tools
+RUN yum -y update; yum clean all; yum install -y net-tools
 
 # Install ansible dependencies, and useful tools.
 RUN yum -y install --enablerepo=epel \
