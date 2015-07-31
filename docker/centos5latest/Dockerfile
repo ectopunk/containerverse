@@ -1,3 +1,4 @@
+#License:  https://www.gnu.org/licenses/gpl-2.0.txt
 FROM centos:5.11
 MAINTAINER "Berry Sizemore" <ectopunk@multiverse.org>
 ENV container docker
