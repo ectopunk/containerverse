@@ -4,8 +4,8 @@ Containerverse is rudimentary x86_64 test bed container group.  The test bed is 
 
 The following table was confirmed as of July 28, 2015.
 
-CentOS-7	7 (1503) 64	
-EOL=06/30/2024
+* CentOS-7	7 (1503) 64	
+** EOL=06/30/2024
 CentOS-6	6.6 	 32	
 EOL=11/30/2020 (no Dockerfile at this time)
 CentOS-6	6.6 	 64	
