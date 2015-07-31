@@ -1,4 +1,0 @@
-Source:  https://docs.docker.com/reference/builder/
-
-docker build -t centos7latest/basenode7 .
-
