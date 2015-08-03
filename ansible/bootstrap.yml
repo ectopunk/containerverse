@@ -1,0 +1,80 @@
+# Create certificates folder and copy SSH public key
+cd ~/repos/containerverse/ansible
+mkdir certificates
+cp ~/.ssh/id_rsa.pub certificates
+
+# Create crypted password
+# If you are using an environment different from your server (e.g., a Mac), 
+# run this command on your server instead
+mkpasswd --method=SHA-512 -S 
+
+# if needed to run mkpasswds
+sudo apt-get install whois
+
+Create ansible/bootstrap.yml
+
+---
+- name: Bootstrap server for future ansible runs
+  hosts: all
+  remote_user: root
+
+  vars: 
+    user_name: multiverse
+    user_pass: $6$j39fJ9FEJ3F4J29$mHfFcKQ5BTDDVY6KbdoIiL.b2QR5NyBP7vgbPUgTC7woMplEXP2G2VqddiV8PvDV.HOIt9LIN27imVnCN3RgH.
+
+  tasks: 
+  - name: Update apt cache
+    apt: update_cache=yes
+
+  - name: Safe aptitude upgrade
+    apt: upgrade=safe
+    async: 600
+    poll: 5
+
+  - name: Add my user
+    user: >
+      name={{ user_name }} 
+      password={{ user_pass }} 
+      shell=/bin/bash 
+      groups=sudo 
+      append=yes 
+      generate_ssh_key=yes 
+      ssh_key_bits=2048 
+      state=present
+
+  - name: Add my workstation user's public key to the new user
+    authorized_key: 
+      user: "{{ user_name }}"
+      key: "{{ lookup('file', 'certificates/id_rsa.pub') }}" 
+      state: present
+#    notify: restart ssh
+
+  - name: Change SSH port
+    lineinfile: 
+      dest: /etc/ssh/sshd_config 
+      regexp: "^Port" 
+      line: "Port 30000" 
+      state: present
+#    notify: restart ssh
+
+  - name: Remove root SSH access
+    lineinfile: 
+      dest: /etc/ssh/sshd_config 
+      regexp: "^PermitRootLogin" 
+      line: "PermitRootLogin no" 
+      state: present
+#    notify: restart ssh
+
+  - name: Remove password SSH access
+    lineinfile: 
+      dest: /etc/ssh/sshd_config 
+      regexp: "^PasswordAuthentication" 
+      line: "PasswordAuthentication no" 
+      state: present
+
+  - name: Reboot the server
+    command: /sbin/reboot 
+
+  handlers:
+  - name: restart ssh
+    service: name=ssh state=restarted
