@@ -1,4 +1,7 @@
 #License:  https://www.gnu.org/licenses/gpl-2.0.txt
 #MAINTAINER "Berry Sizemore" <ectopunk@multiverse.org>
 
-docker rmi $(docker images | grep "^<none>" | awk "{print $3}")
+docker ps
+get container names
+docker stop CONTAINER_NAME[]
+docker rm $(docker ps -a -q)

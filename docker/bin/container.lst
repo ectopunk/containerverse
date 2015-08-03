@@ -1,0 +1,15 @@
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+139510f2824d        centos:7            "bash"              8 seconds ago       Up 7 seconds                            evil_lovelace
+fe5a413d4855        centos:7            "bash"              8 seconds ago       Up 7 seconds                            suspicious_hoover
+fa17fcd68118        centos:6.6          "bash"              9 seconds ago       Up 8 seconds                            admiring_wozniak
+2b10288528a0        centos:6.6          "bash"              10 seconds ago      Up 9 seconds                            naughty_mayer
+466101f9ec4b        centos:5.11         "bash"              10 seconds ago      Up 10 seconds                           elegant_cori
+a285f39ae9aa        centos:5.11         "bash"              11 seconds ago      Up 10 seconds                           grave_mclean
+
+
+172.17.0.6,evil_lovelace
+172.17.0.5,suspicious_hoover
+172.17.0.4,admiring_wozniak
+172.17.0.3,naughty_mayer
+172.17.0.2,elegant_cori
+172.17.0.1,grave_mcleadn
