@@ -1,0 +1,7 @@
+#This is the global hosts file.
+
+[127.0.0.1]
+localhost
+
+[test1]
+ansible-tst-0[1:6]
