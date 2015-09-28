@@ -5,3 +5,4 @@ localhost
 
 [test1]
 ansible-tst-0[1:6]
+#test
