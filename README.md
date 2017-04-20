@@ -11,3 +11,5 @@ The following table was confirmed as of July 28, 2015.
 * CentOS-5	5.11	 64	- EOL=03/31/2017
 
 Confusion surrounding Oracle UEK, versus Ora-can't on RHEL 5.  I386 archetecture is out there, somewhere, I just know it.  There are some shocking differences in RHEL 7 that need to be understood, namely how common shell tools have gone missing potentially wiping out older automation.
+
+test
